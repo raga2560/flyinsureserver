@@ -2,7 +2,7 @@
 
 var CallDatabase = function ( io, db ) {
  
-    var callDB = require('../calldatastore')(db, 'hello');
+    var callDB = require('../calldatastore')(db, 'callstore');
     var database = io.of('/calldatabase');
  
     database.on('connection', function(socket) {
