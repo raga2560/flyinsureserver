@@ -18,13 +18,34 @@ var todos = {
     getAllTodos: function(callback) {
          dbtodos.find().toArray(callback);
     },
+    listall: function(callback) {
+         dbtodos.find().toArray(callback);
+    },
+    push: function(todo, callback) {
+        dbtodos.insert(todo, callback);
+    },
     saveTodo: function(todo, callback) {
         dbtodos.insert(todo, callback);
     },
+    get: function(todo, callback) {
+        dbtodos.find({
+            _id: todo.id
+        },  callback);
+    },
+    update: function(todo, callback) {
+        dbtodos.update({
+            _id: todo.id
+        }, todo, {}, callback);
+    },
     updateTodo: function(todo, callback) {
         dbtodos.update({
-            id: todo.id
+            _id: todo.id
         }, todo, {}, callback);
+    },
+    remove: function(id, callback) {
+        dbtodos.remove({
+            _id: id
+        }, '', callback);
     },
     deleteTodo: function(id, callback) {
         dbtodos.remove({

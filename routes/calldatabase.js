@@ -15,7 +15,18 @@ var CallDatabase = function ( io, db ) {
         socket.on('getAllTodos', function() {
             dispatchAll(socket);
         });
+        socket.on('listall', function() {
+           callDB.listall(function(err, data) {
+            if (err) throw err; // You can emit the error to a socket 
+            io.of('/calldatabase').emit('listall', data);
+           })
+        });
  
+        socket.on('push', function(todo) {
+            callDB.push(todo, function(err, data) {
+                if (err) throw err; // You can emit the error to a socket	
+            });
+         });
         socket.on('saveTodo', function(todo) {
             callDB.saveTodo(todo, function(err, data) {
                 if (err) throw err; // You can emit the error to a socket	
