@@ -23,6 +23,7 @@ var todos = {
     },
     push: function(todo, callback) {
         dbtodos.insert(todo, callback);
+		
     },
     saveTodo: function(todo, callback) {
         dbtodos.insert(todo, callback);
