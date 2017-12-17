@@ -11,52 +11,52 @@ function CallDataStore(db) {
         return new CallDataStore(db);
     }
 
-    //var dbtodos = db.collection(mycoll);
+    
 
 
 
-var todos = {
+var dbfuncpointers = {
  
     listall: function(recname,query, callback) {
-		var dbtodos1 = db.collection(recname);
-         dbtodos1.find(query).toArray(callback);
+		var dbref = db.collection(recname);
+         dbref.find(query).toArray(callback);
     },
     push: function(recname, todo, callback) {
-		var dbtodos1 = db.collection(recname);
-        dbtodos1.insert(todo, callback);
+		var dbref = db.collection(recname);
+        dbref.insert(todo, callback);
 		
     },
     get: function(recname, id, callback) {
 		console.log('in get call'+id +'  '+recname);
 		var o_id = new mongo.ObjectID(id);
 		
-		var dbtodos1 = db.collection(recname);
-        dbtodos1.findOne({
+		var dbref = db.collection(recname);
+        dbref.findOne({
             _id: o_id,
         },  callback);
     },
     update: function(recname, id, data, callback) {
-		var dbtodos1 = db.collection(recname);
+		var dbref = db.collection(recname);
 		var o_id = new mongo.ObjectID(id);
-        dbtodos1.update({
+        dbref.update({
             _id: o_id
         }, data, {}, callback);
     },
     remove: function(recname, id, callback) {
-		var dbtodos1 = db.collection(recname);
+		var dbref = db.collection(recname);
 		var o_id = new mongo.ObjectID(id);
-        dbtodos1.remove({
+        dbref.remove({
             _id: o_id
         }, '', callback);
     },
 	removeall: function(recname, callback) {
-		var dbtodos1 = db.collection(recname);
-        dbtodos1.remove({
+		var dbref = db.collection(recname);
+        dbref.remove({
             
         }, '', callback);
     }
 }
- return todos;
+ return dbfuncpointers;
 }
  
 module.exports = CallDataStore;

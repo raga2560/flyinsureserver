@@ -4,24 +4,16 @@ var express = require('express')
   , server = require('http').createServer(app)
   , io = require('socket.io')(server)
   
-/*  , iotest = require('socket.io')(server, {
-	  path: '/test',
-  serveClient: false,
-  // below are engine.IO options
-  pingInterval: 10000,
-  pingTimeout: 5000,
-  cookie: false
-  
-  })  */
   , session = require("express-session")({
     secret: "my-secret",
     resave: true,
     saveUninitialized: true
   })
   , sharedsession = require("express-socket.io-session")
+  , processingserver = require('./processingserver')
 
   , MongoClient = require('mongodb').MongoClient // Driver for connecting to MongoDB
-//  , routes = require('./routes'); // Routes for our application
+
 
   
 
@@ -44,9 +36,6 @@ io.on("connection", function(socket) {
             socket.handshake.session.save();
         }
     });       
- /*socket.on('message', function(msg){
-    io.emit('message', msg+1);
-  }); */
   
 });
 
@@ -74,7 +63,7 @@ io.on("connection", function(socket) {
 });
 // https://stackoverflow.com/questions/35014487/how-do-you-pass-a-socket-object-to-a-route
 
-// var BlockChain = require('./routes/BlockChain');
+
 
 
 
@@ -84,7 +73,7 @@ MongoClient.connect('mongodb://localhost:27017/demoapp', function(err, db) {
 
 console.log ("test1"); 
 	
-var todos =  require('./routes/calldatabase')(io, db);
+var todos =  require('./receivingfunctions/calldatabase')(io, db);
 
 //	routes(app, db, multichain, io);
     // Application routes

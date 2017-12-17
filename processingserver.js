@@ -31,7 +31,7 @@ firebase.initializeApp({
   databaseURL: "https://the-deal-maker.firebaseio.com"
 });
 
-var Weekly = require('./functions/weekly');
+var Weekly = require('./processingfunctions/weekly');
 
 var weekly = new Weekly(clientsocket, firebase);
 
@@ -56,7 +56,7 @@ console.log(config.tradeinterval);
 function assetCreateJob (){
 // get list of assets from firebase and update in blockchain
 //  call back to update firebase
-
+console.log ("job created");
 
 }
 
@@ -64,6 +64,7 @@ function tradeJob (){
 // get list of assets from firebase and update in blockchain
 //  call back to update firebase
 
+console.log ("trade job created");
 
 }
 
