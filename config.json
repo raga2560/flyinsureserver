@@ -1,4 +1,7 @@
 {
   "tradeinterval": 100,
-  "assetcreateinterval": 10000
+  "assetcreateinterval": 10000,
+  "datatype": "fire",
+"imageuploaddir"  : "uploadedimages",
+"fileuploaddir"  : "uploadedfiles"
 }

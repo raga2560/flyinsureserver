@@ -11,7 +11,8 @@ var express = require('express')
   })
   , sharedsession = require("express-socket.io-session")
   , processingserver = require('./processingserver')
-
+  , multer = require('multer')
+  , routes = require('./routes')
   , MongoClient = require('mongodb').MongoClient // Driver for connecting to MongoDB
 
 
@@ -53,8 +54,9 @@ io.on("connection", function(socket) {
        res.setHeader('Access-Control-Allow-Origin', origin);
   }
   //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header('Access-Control-Allow-Credentials', true);
   return next();
   
@@ -75,7 +77,7 @@ console.log ("test1");
 	
 var todos =  require('./receivingfunctions/calldatabase')(io, db);
 
-//	routes(app, db, multichain, io);
+	routes(app, db, io, multer);
     // Application routes
 	
     server.listen(8081, function (){

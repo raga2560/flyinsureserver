@@ -24,6 +24,7 @@ var Promise = require('promise');
 var escape = require('escape-html');
 var clientsocket = require('socket.io-client')('http://localhost:8080');
 var serviceAccount = require('./serviceAccountKey.json');
+
 var config = require('./config.json');
 
 firebase.initializeApp({
