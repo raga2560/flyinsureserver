@@ -21,6 +21,8 @@ serviceAccountKey.json
 coverage/
 dist/
 node_modules/
+uploadedimages/
+uploadedfiles/
 tmp/
 temp/
 hooks/

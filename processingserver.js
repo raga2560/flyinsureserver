@@ -57,7 +57,7 @@ console.log(config.tradeinterval);
 function assetCreateJob (){
 // get list of assets from firebase and update in blockchain
 //  call back to update firebase
-console.log ("job created");
+//console.log ("job created");
 
 }
 
@@ -65,7 +65,7 @@ function tradeJob (){
 // get list of assets from firebase and update in blockchain
 //  call back to update firebase
 
-console.log ("trade job created");
+//console.log ("trade job created");
 
 }
 
