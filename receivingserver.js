@@ -13,9 +13,17 @@ var express = require('express')
   , processingserver = require('./processingserver')
   , multer = require('multer')
   , routes = require('./routes')
+  , passport = require('passport')
+  , mongoose = require('mongoose')
+  , logger = require('morgan')
+
+  , cors = require('cors')
+  , databaseConfig = require('./config/database')
+  
   , MongoClient = require('mongodb').MongoClient // Driver for connecting to MongoDB
 
 
+  mongoose.connect(databaseConfig.url);
   
 
 // Attach session
@@ -68,8 +76,7 @@ io.on("connection", function(socket) {
 
 
 
-
-MongoClient.connect('mongodb://localhost:27017/demoapp', function(err, db) {
+MongoClient.connect(databaseConfig.url, function(err, db) {
     "use strict";
     if(err) throw err;
 

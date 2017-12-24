@@ -1,8 +1,9 @@
 var FileUpload = require('./fileupload')
-
+var MoronyAuth = require('./moronyauth/moronyauth')
 	module.exports = exports = function(app, db, io, multer) {
 	
 	var fileupload = new FileUpload(db, multer);
+	var morony = new MoronyAuth(app, db, multer);
 	
     
 
